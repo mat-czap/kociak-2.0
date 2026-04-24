@@ -1,26 +1,308 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #efe7d8;
+  --cream-2: #f3ece0;
+  --cream-card: #f7f1e6;
+  --cream-footer: #e6dcc9;
+  --burgundy: #6b2836;
+  --burgundy-hover: #571f2b;
+  --ink: #1d1a17;
+  --ink-soft: #3a332e;
+  --muted: #7a6e64;
+  --line: rgba(29, 26, 23, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-cream-card: var(--cream-card);
+  --color-cream-footer: var(--cream-footer);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-hover: var(--burgundy-hover);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+html,
+body {
+  background: var(--cream);
+  color: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--burgundy);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background 180ms ease;
+}
+.btn-primary:hover {
+  background: var(--burgundy-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: var(--ink);
+  padding: 0.8rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background 180ms ease;
+}
+.btn-secondary:hover {
+  background: #faf6ee;
+}
+
+dialog::backdrop {
+  background: rgba(20, 12, 14, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+/* "MC dla Adiego" signature — attention-grabbing pulse, same font size */
+.mc-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: #ef1e2a;
+  font-weight: 700;
+  animation: mc-sig-glow 1.4s ease-in-out infinite;
+}
+
+.mc-signature__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  color: #ef1e2a;
+  flex-shrink: 0;
+}
+
+.mc-signature__ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  border: 1.5px solid #ef1e2a;
+  animation: mc-sig-ring 1.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+.mc-signature__heart {
+  width: 1em;
+  height: 1em;
+  transform-origin: center;
+  animation: mc-sig-beat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(239, 30, 42, 0.7));
+}
+
+@keyframes mc-sig-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(239, 30, 42, 0.55),
+      0 0 10px rgba(239, 30, 42, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 6px rgba(239, 30, 42, 0.9),
+      0 0 16px rgba(239, 30, 42, 0.6),
+      0 0 26px rgba(239, 30, 42, 0.35);
+  }
+}
+
+@keyframes mc-sig-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes mc-sig-beat {
+  0%, 60%, 100% { transform: scale(1); }
+  15%          { transform: scale(1.28); }
+  30%          { transform: scale(1); }
+  42%          { transform: scale(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-signature,
+  .mc-signature__ring,
+  .mc-signature__heart {
+    animation: none;
+  }
+  .mc-signature {
+    text-shadow: 0 0 6px rgba(239, 30, 42, 0.55);
+  }
+}
+
+/* Scroll-driven section reveal — native CSS scroll timeline.
+   Zero JS, runs on the compositor. Guarded by @supports so
+   unsupported browsers render content normally instead of stuck
+   at opacity 0. Reduced-motion users skip the animation too. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation: reveal-in ease-out both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 70%;
+    }
+    [data-reveal-step="2"] { animation-range: entry 12% entry 78%; }
+    [data-reveal-step="3"] { animation-range: entry 18% entry 85%; }
+    [data-reveal-step="4"] { animation-range: entry 24% entry 92%; }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero entrance — fires once on page load (NOT scroll-driven). The photo
+   does a slow Ken-Burns zoom-out; the logo card drops in with a gentle
+   overshoot; the eyebrow → h1 → lead → CTA row cascade up with staggered
+   delays so the eye is led top-to-bottom through the copy. All animations
+   use transform + opacity only so they run on the compositor. Content is
+   present in SSR HTML — `animation-fill-mode: both` keeps the starting
+   frame applied before the animation begins, so pre-JS the content is
+   already in its final layout position (just transparent for a beat).
+   Reduced-motion users get content instantly with no transform. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-kenburns {
+    animation: hero-kenburns 14s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: 50% 45%;
+  }
+
+  [data-hero-enter] {
+    animation: hero-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  [data-hero-enter="card"] {
+    animation: hero-card-drop 800ms cubic-bezier(0.34, 1.18, 0.64, 1) both;
+  }
+  [data-hero-enter="1"] { animation-delay: 220ms; }
+  [data-hero-enter="2"] { animation-delay: 360ms; }
+  [data-hero-enter="3"] { animation-delay: 520ms; }
+  [data-hero-enter="4"] { animation-delay: 700ms; }
+}
+
+@keyframes hero-kenburns {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes hero-card-drop {
+  from { opacity: 0; transform: translate3d(0, -12px, 0) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero-scroll-hint {
+  animation: hero-scroll-hint 2.2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-hint {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+/* Menu item card — paper-on-tablecloth treatment. Subtle vertical
+   gradient (brighter champagne at the top, relaxing back toward the
+   section tone at the bottom) plus a soft bloom shadow to lift the
+   card off the section. Hover treatment in .card-hover overrides the
+   shadow while keeping the gradient background. */
+.menu-card {
+  background: linear-gradient(180deg, #fcf6e5 0%, #f6efdd 100%);
+  box-shadow:
+    0 1px 0 0 rgba(29, 26, 23, 0.04),
+    0 10px 26px -18px rgba(29, 26, 23, 0.14);
+}
+
+/* Cream-card hover — subtle burgundy ring + soft lift shadow + micro rise.
+   Ring via box-shadow (no layout shift); gated by (hover: hover) so the
+   state doesn't stick on touch devices. */
+.card-hover {
+  transition:
+    box-shadow 300ms cubic-bezier(0.215, 0.61, 0.355, 1),
+    transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@media (hover: hover) {
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px rgba(107, 40, 54, 0.18),
+      0 14px 32px -20px rgba(29, 26, 23, 0.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover {
+    transition: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
 }
