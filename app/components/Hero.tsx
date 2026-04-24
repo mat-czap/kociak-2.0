@@ -72,6 +72,10 @@ export function Hero() {
               width={960}
               height={960}
               priority
+              // Displayed size is 64–96 CSS px; without sizes Next uses the
+              // intrinsic 960px for srcset which ships a 20–40× oversized
+              // image. 128px covers the largest breakpoint + DPR headroom.
+              sizes="128px"
               className="h-16 w-auto object-contain sm:h-20 md:h-24"
             />
           </div>

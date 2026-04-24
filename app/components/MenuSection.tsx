@@ -88,8 +88,8 @@ export function MenuSection() {
           Wybierz kategorię i zobacz propozycje.
         </p>
 
-        <div className="mt-10 overflow-x-auto" data-reveal data-reveal-step="4">
-          <div className="flex min-w-fit items-center gap-1 rounded-full bg-white p-1.5 shadow-[0_2px_10px_-6px_rgba(0,0,0,0.15)]">
+        <div className="mt-10 md:overflow-x-auto" data-reveal data-reveal-step="4">
+          <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 rounded-3xl bg-white p-1.5 shadow-[0_2px_10px_-6px_rgba(0,0,0,0.15)] md:min-w-fit md:flex-nowrap md:justify-start md:rounded-full">
             {categories.map((cat) => {
               const isActive = cat === active;
               return (
