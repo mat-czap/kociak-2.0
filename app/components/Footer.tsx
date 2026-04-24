@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="bg-cream-footer">
       <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10">
         <div className="grid gap-10 md:grid-cols-3">
-          <div>
+          <div className="text-center md:text-left">
             <div className="inline-flex items-center justify-center rounded-2xl bg-cream-2 px-4 py-3">
               <Image
                 src="/logo-full.png"
@@ -20,7 +20,7 @@ export function Footer() {
                 className="h-14 w-auto object-contain"
               />
             </div>
-            <p className="text-ink-soft mt-5 max-w-xs text-sm leading-relaxed">
+            <p className="text-ink-soft mx-auto mt-5 max-w-xs text-sm leading-relaxed md:mx-0">
               Bar &middot; Bistro &middot; Pizza — ciepłe wnętrze i smaki, które
               dobrze brzmią w rozmowie.
             </p>
@@ -35,7 +35,7 @@ export function Footer() {
             </a>
           </div>
 
-          <div>
+          <div className="text-center md:text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
               Kontakt
             </p>
@@ -75,7 +75,7 @@ export function Footer() {
             </dl>
           </div>
 
-          <div>
+          <div className="text-center md:text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
               Jak dojechać
             </p>

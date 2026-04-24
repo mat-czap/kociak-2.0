@@ -4,16 +4,16 @@ export function ReservationSection() {
   return (
     <section id="rezerwacja" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="eyebrow" data-reveal>Rezerwacja</p>
+        <p className="eyebrow text-center sm:text-left" data-reveal>Rezerwacja</p>
         <h2
-          className="font-display mt-3 text-4xl font-semibold leading-tight sm:text-5xl"
+          className="font-display mt-3 text-center text-4xl font-semibold leading-tight sm:text-left sm:text-5xl"
           data-reveal
           data-reveal-step="2"
         >
           Stolik czeka — napisz, kiedy przychodzicie
         </h2>
         <p
-          className="text-ink-soft mt-4 max-w-2xl text-base leading-relaxed"
+          className="text-ink-soft mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed sm:mx-0 sm:text-left"
           data-reveal
           data-reveal-step="3"
         >
@@ -28,13 +28,15 @@ export function ReservationSection() {
         >
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <h3 className="font-display text-2xl font-semibold">Kultowa Bistro</h3>
-              <p className="text-ink-soft mt-3 max-w-md text-sm leading-relaxed">
+              <h3 className="font-display text-center text-2xl font-semibold md:text-left">
+                Kultowa Bistro
+              </h3>
+              <p className="text-ink-soft mx-auto mt-3 max-w-md text-center text-sm leading-relaxed md:mx-0 md:text-left">
                 Rezerwacje przyjmujemy codziennie w godzinach otwarcia. Dla
                 większych grup zostaw proszę krótką wiadomość w polu „Uwagi”.
               </p>
 
-              <dl className="mt-6 space-y-1.5 text-sm">
+              <dl className="mt-6 space-y-1.5 text-center text-sm md:text-left">
                 <div>
                   <dt className="inline font-semibold text-ink">Telefon: </dt>
                   <dd className="inline text-ink-soft">
@@ -61,7 +63,7 @@ export function ReservationSection() {
               </dl>
             </div>
 
-            <div className="flex flex-col items-start gap-2 md:items-end">
+            <div className="flex flex-col items-center gap-2 md:items-end">
               <ReserveButton>Otwórz formularz rezerwacji</ReserveButton>
               <p className="text-muted text-xs">Zajmie to ok. 30 sekund.</p>
             </div>

@@ -21,16 +21,38 @@ export function Hero() {
         }}
       />
 
-      {/* Plum-red mood wash with heavy bottom darkening. Top stop keeps a
-          light burgundy tint so the logo card frames cleanly; bottom stop
-          goes nearly black-plum so the headline + ghost CTA read without
-          fighting the bright wood floor in the photo. */}
+      {/* Layer 1 — plum-red mood wash, reshaped into a 3-zone curve:
+            • 0–14%  — short, strong dark band behind the fixed navbar
+            • 14–78% — lighter middle valley so the photo (velvet banquette,
+                        plants, warm wood) reads more clearly; navbar-zone
+                        darkness doesn't "bleed" down into the photo anymore
+            • 78–100% — ramps back to near-black plum behind the headline
+                        and ghost "Rezerwuj stolik" ghost CTA
+          The non-monotonic alpha (0.42 → 0.24 → 0.20 → 0.42 → 0.74) is what
+          compresses the top dark band and lifts the middle — a plain 3-stop
+          linear gradient can't produce this shape. */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(68, 26, 46, 0.28) 0%, rgba(48, 20, 36, 0.40) 45%, rgba(12, 6, 10, 0.75) 100%)",
+            "linear-gradient(180deg, rgba(68, 26, 46, 0.42) 0%, rgba(48, 20, 36, 0.24) 14%, rgba(48, 20, 36, 0.20) 50%, rgba(30, 14, 22, 0.42) 78%, rgba(12, 6, 10, 0.74) 100%)",
+        }}
+      />
+
+      {/* Layer 2 — diagonal corner vignette. Anchors a short, dense black
+          wedge in the bottom-left (where the logo card, headline and CTAs
+          live on sm+ layouts) and fades to fully transparent ~halfway up
+          the diagonal, so the top-right of the photo (bright plants +
+          window light) stays untouched. Pure black on purpose — no hue
+          shift — so stacking it on the plum wash deepens the text zone
+          rather than recolouring it. */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top right, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.20) 28%, rgba(0, 0, 0, 0) 55%)",
         }}
       />
 
@@ -93,11 +115,11 @@ export function Hero() {
             >
               <Link
                 href="#menu"
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-cream-card"
+                className="inline-flex min-w-[200px] items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-cream-card sm:min-w-0"
               >
                 Nasze menu
               </Link>
-              <ReserveButton className="inline-flex items-center justify-center rounded-full border border-white/80 bg-transparent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
+              <ReserveButton className="inline-flex min-w-[200px] items-center justify-center rounded-full border border-white/80 bg-transparent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:min-w-0">
                 Rezerwuj stolik
               </ReserveButton>
             </div>

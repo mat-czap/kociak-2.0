@@ -137,21 +137,35 @@ export function Navbar() {
           Rezerwuj stolik
         </ReserveButton>
 
-        {/* Hamburger — mobile only */}
-        <button
-          type="button"
-          aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setMenuOpen((v) => !v)}
-          className={`relative flex h-10 w-10 items-center justify-center rounded-full transition-colors md:hidden ${
-            onDark
-              ? "text-white hover:bg-white/10"
-              : "text-ink hover:bg-ink/5"
-          }`}
-        >
-          <HamburgerIcon open={menuOpen} />
-        </button>
+        {/* Mobile-only right group — holds the conditional Reserve CTA plus
+            the hamburger so they stay clumped on the right edge. Without
+            this wrapper, justify-between on the header row would scatter
+            the Reserve pill into the middle when it's shown. md:hidden so
+            the desktop row (which has its own Reserve) is untouched. */}
+        <div className="flex items-center gap-2 md:hidden">
+          {menuOpen && (
+            <ReserveButton
+              onClick={closeMenu}
+              className="inline-flex items-center justify-center rounded-full bg-burgundy px-4 py-2 text-sm font-medium text-white shadow-[0_10px_24px_-12px_rgba(107,40,54,0.5)] transition-colors hover:bg-burgundy-hover"
+            >
+              Rezerwuj stolik
+            </ReserveButton>
+          )}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((v) => !v)}
+            className={`relative flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+              onDark
+                ? "text-white hover:bg-white/10"
+                : "text-ink hover:bg-ink/5"
+            }`}
+          >
+            <HamburgerIcon open={menuOpen} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer — slides from under the nav row, fades together */}
@@ -164,6 +178,9 @@ export function Navbar() {
             : "pointer-events-none -translate-y-2 opacity-0"
         }`}
       >
+        {/* Drawer body is now just the link list — the Reserve CTA has moved
+            to the top-right next to the close button (Image #8 pattern) so
+            it stays above-the-fold and in the user's thumb zone. */}
         <nav className="flex flex-col gap-1 px-6 pb-6 pt-3">
           {links.map((l) => (
             <Link
@@ -175,14 +192,6 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <div className="mt-3 border-t border-line pt-4">
-            <ReserveButton
-              onClick={closeMenu}
-              className="inline-flex w-full items-center justify-center rounded-full bg-burgundy px-5 py-3 text-base font-medium text-white transition-colors hover:bg-burgundy-hover"
-            >
-              Rezerwuj stolik
-            </ReserveButton>
-          </div>
         </nav>
       </div>
     </header>

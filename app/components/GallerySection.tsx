@@ -11,7 +11,7 @@ type Tile = { src: string; alt: string; position?: string };
 
 /** Real photos from current-page/images — 2×2 grid matching the design. */
 const INTERIOR: Tile[] = [
-  { src: "/photos/2_alone_image.png", alt: "Welurowa ława z roślinami", position: "50% 55%" },
+  { src: "/photos/2_alone_image2.png", alt: "Welurowa ława z roślinami", position: "50% 55%" },
   { src: "/photos/image-2.png", alt: "Detal stołu i naczyń", position: "50% 60%" },
   { src: "/photos/image-3.png", alt: "Sala przy oknach — ciepłe światło", position: "50% 55%" },
   { src: "/photos/image-4.png", alt: "Kieliszki i kwiaty na stole", position: "50% 55%" },
@@ -63,16 +63,16 @@ export function GallerySection() {
   return (
     <section id="galeria" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="eyebrow" data-reveal>Galeria</p>
+        <p className="eyebrow text-center sm:text-left" data-reveal>Galeria</p>
         <h2
-          className="font-display mt-3 text-4xl font-semibold leading-tight sm:text-5xl"
+          className="font-display mt-3 text-center text-4xl font-semibold leading-tight sm:text-left sm:text-5xl"
           data-reveal
           data-reveal-step="2"
         >
           Światło, welur i detal
         </h2>
         <p
-          className="text-ink-soft mt-4 max-w-2xl text-base leading-relaxed"
+          className="text-ink-soft mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed sm:mx-0 sm:text-left"
           data-reveal
           data-reveal-step="3"
         >

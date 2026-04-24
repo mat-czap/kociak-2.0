@@ -4,16 +4,16 @@ export function AboutSection() {
   return (
     <section id="o-nas" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <p className="eyebrow" data-reveal>O nas</p>
+        <p className="eyebrow text-center sm:text-left" data-reveal>O nas</p>
         <h2
-          className="font-display mt-3 text-4xl font-semibold leading-tight sm:text-5xl"
+          className="font-display mt-3 text-center text-4xl font-semibold leading-tight sm:text-left sm:text-5xl"
           data-reveal
           data-reveal-step="2"
         >
           Kultowe miejsce w Rogoźnie
         </h2>
         <p
-          className="text-ink-soft mt-4 max-w-2xl text-base leading-relaxed"
+          className="text-ink-soft mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed sm:mx-0 sm:text-left"
           data-reveal
           data-reveal-step="3"
         >
@@ -58,7 +58,7 @@ export function AboutSection() {
               jasno i spokojnie — a obsługa zawsze ma czas, żeby doradzić.
             </p>
 
-            <div className="card-hover mt-4 rounded-2xl bg-cream-card p-6">
+            <div className="card-hover mt-4 rounded-2xl bg-white p-6">
               <p className="text-sm font-semibold tracking-wide text-ink">W skrócie</p>
               <p className="text-muted mt-2 text-sm">
                 Ciepłe wnętrze &middot; Smakowite klasyki &middot; Dobra energia
